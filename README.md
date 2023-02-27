@@ -1,2 +1,2 @@
 # api-todo-node
-App todo simples usando node
+App to-do simples usando node
