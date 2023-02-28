@@ -4,11 +4,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const sequelize = new Sequelize(
-    process.env.MYSQL_BD as string,
+    process.env.MYSQL_DB as string,
     process.env.MYSQL_USER as string,
     process.env.MYSQL_PASSWORD as string,
     {
         dialect:'mysql',
-        port: parseInt(process.env.PORT as string)
+        //Presta atenção seu animal burro, .env.MYSQL_PORT, port nunca ia consequir acessar com .env.PORT.
+        port: parseInt(process.env.MYSQL_PORT as string)
     }
 );
