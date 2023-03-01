@@ -9,7 +9,6 @@ export const sequelize = new Sequelize(
     process.env.MYSQL_PASSWORD as string,
     {
         dialect:'mysql',
-        //Presta atenção seu animal burro, .env.MYSQL_PORT, port nunca ia consequir acessar com .env.PORT.
         port: parseInt(process.env.MYSQL_PORT as string)
     }
 );

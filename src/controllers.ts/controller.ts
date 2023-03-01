@@ -6,7 +6,7 @@ export const taskAll = async (req: Request, res: Response) => {
     res.json({ task })
 };
 
-export const taskCreat = async (req: Request, res: Response) => {
+export const taskCreate = async (req: Request, res: Response) => {
     //Verifica se o campo title existe
     if (req.body.title) {
         let newTask = await Todo.create({
