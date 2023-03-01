@@ -7,8 +7,8 @@ const router = Router();
 
 router.get('/taskAll', controller.taskAll);
 router.post('/taskCreate', controller.taskCreat);
-// router.put('/taskUpdate', controller.taskUpdate);
-// router.delete('/taskDelete', controller.taskDelete);
+router.put('/taskUpdate/:id', controller.taskUpdate);
+router.delete('/taskDelete/:id', controller.taskDelete);
 
 
 export default router;
