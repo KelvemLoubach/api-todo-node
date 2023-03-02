@@ -11,7 +11,7 @@ export const taskCreate = async (req: Request, res: Response) => {
     if (req.body.title) {
         let newTask = await Todo.create({
             title: req.body.title,
-            //Verifica se o campo done foi preenchido, se sim retorna true caso contrário retorna false
+            //Verifica se o campo done existe, se sim retorna true caso contrário retorna false
             done: req.body.done ? true : false
         });
         res.status(201).json({ newTask });
@@ -65,3 +65,29 @@ export const taskDelete = async (req: Request, res: Response) => {
     } 
      res.json({ Error: 'Tarefa não encontrada!' }) 
 };
+
+export const uploadFile = async (req: Request, res: Response)=>{
+
+ // Sintaxe de assinatura de índice. As propriedades do objeto são do tipo strings e os valores são do tipo Multer.file.
+
+ // const files = req.files as {[fieldname: string]: Express.Multer.File[]};
+
+ // Criando type específico e estático.
+
+//    type uploadFiles = {
+//     avatars: Express.Multer.File[],
+//     gallery: Express.Multer.File[]
+//    };
+//    const files = req.files as uploadFiles;
+
+// Criando type assertion ( type direto no assertion).
+
+const files = req.files as { avatars: Express.Multer.File[], gallery: Express.Multer.File[] }
+
+
+    console.log(files.avatars);
+    console.log(files.gallery);
+   
+
+    res.json({ok: 'Ok'});
+}
