@@ -80,14 +80,16 @@ export const uploadFile = async (req: Request, res: Response)=>{
 //    };
 //    const files = req.files as uploadFiles;
 
-// Criando type assertion ( type direto no assertion).
+//Type assertion. req.files é um objeto com duas propriedades, avatars e gallery, e cada uma são um array do tipo file
+// const files = req.files as { avatars: Express.Multer.File[], gallery: Express.Multer.File[] }
 
-const files = req.files as { avatars: Express.Multer.File[], gallery: Express.Multer.File[] }
 
-
-    console.log(files.avatars);
-    console.log(files.gallery);
+//     console.log(files.avatars);
+//     console.log(files.gallery);
    
+   const teste = req.file;
+
+   console.log(teste)
 
     res.json({ok: 'Ok'});
 }
