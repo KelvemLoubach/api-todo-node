@@ -17,15 +17,15 @@ const upload = multer({
 
     fileFilter: (req ,file, cb)=>{
 
-        const verifTypeImg: string[] = ['image/jpg', 'image/jpeg', 'image/png']
+        const verifTypeImg: string[] = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'];
 
-      //callback -- verificando com o método includes() se em file.mimetype existe um arquivo .jpg, jpeg ou png
+      //callback -- verificando com o método includes() se em file.mimetype existe um arquivo .jpg, jpeg, png ou webp.
         if(!verifTypeImg.includes(file.mimetype)){
             cb(new Error('Arquivo inválido!')) 
             cb(null,false)   
         } else {
             cb(null, true)
-        }
+        } 
     }
 });
 

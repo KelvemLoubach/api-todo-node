@@ -1,5 +1,8 @@
 import { Request, Response } from 'express';
-import { Todo } from '../models/todo'
+import { Todo } from '../models/todo';
+import { unlink } from 'fs/promises';
+import path from 'path';
+import sharp from 'sharp';
 
 export const taskAll = async (req: Request, res: Response) => {
     let task = await Todo.findAll();
@@ -87,9 +90,22 @@ export const uploadFile = async (req: Request, res: Response)=>{
 //     console.log(files.avatars);
 //     console.log(files.gallery);
    
-   const teste = req.file;
+   
+    if(req.file){
 
-   console.log(teste)
+       await sharp(req.file.path)
+        .resize(300,300, {fit:sharp.fit.cover})
+        //.blur(50)
+        .toFile(`./public/image/${req.file.filename}.resize.${req.file.originalname}`);
+        res.json({show: 'Certo!'});
 
-    res.json({ok: 'Ok'});
+        await unlink(req.file.path);
+
+    } else {
+        res.json({Error: 'Arquivo inválido!'});
+    }
+
+   
+
+    
 }
