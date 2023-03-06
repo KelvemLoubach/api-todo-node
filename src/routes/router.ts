@@ -17,7 +17,7 @@ const upload = multer({
 
     fileFilter: (req ,file, cb)=>{
 
-        const verifTypeImg: string[] = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'];
+        const verifTypeImg: string[] = ['image/jpg', 'image/jpeg', 'image/png'];
 
       //callback -- verificando com o método includes() se em file.mimetype existe um arquivo .jpg, jpeg, png ou webp.
         if(!verifTypeImg.includes(file.mimetype)){
